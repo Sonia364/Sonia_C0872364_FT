@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     
     var timer: Timer?
     
+    var userProgress = [String]()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -37,14 +39,20 @@ class ViewController: UIViewController {
     
     @IBAction func evenLabelTap(_ sender: UITapGestureRecognizer) {
         correctIncorrect.isHidden = false
-        
+        var result = ""
         let currentNumber = Int(randomNumber.text!)
         if isEven(currentNumber!){
             correctIncorrect.image = UIImage(named: "correct")
+            result = "correct"
+            
         }else{
             correctIncorrect.image = UIImage(named: "wrong")
             self.showWrongAlert("Odd")
+            result = "wrong"
         }
+        
+        let report = "\(currentNumber!) is Even "
+        userProgress.append(report)
     }
     
     
@@ -60,15 +68,19 @@ class ViewController: UIViewController {
     
     @IBAction func oddLabelTap(_ sender: UITapGestureRecognizer) {
         correctIncorrect.isHidden = false
+        var result = ""
         let currentNumber = Int(randomNumber.text!)
         if isEven(currentNumber!){
             correctIncorrect.image = UIImage(named: "wrong")
+            result = "wrong"
             self.showWrongAlert("Even")
         }else{
             correctIncorrect.image = UIImage(named: "correct")
+            result = "correct"
         }
         
-        
+        let report = "\(currentNumber!) is Odd "
+        userProgress.append(report)
     }
     
     
@@ -113,7 +125,7 @@ class ViewController: UIViewController {
             let mainSB : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let ProgressVC = mainSB.instantiateViewController(withIdentifier: "ProgressVCScene") as? ProgressVC
             ProgressVC?.delegate = self
-            ProgressVC?.progressData = ["even","odd"]
+            ProgressVC?.progressData = self.userProgress
             if let ProgressVC = ProgressVC {
                 self.navigationController?.pushViewController(ProgressVC, animated: true)
             }
