@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var correctIncorrect: UIImageView!
     
     var timer: Timer?
-    var count = 0
     
     override func viewDidLoad() {
         
@@ -42,17 +41,7 @@ class ViewController: UIViewController {
             correctIncorrect.image = UIImage(named: "correct")
         }else{
             correctIncorrect.image = UIImage(named: "wrong")
-            count += 1
-        }
-        if count == 5{
-            timer?.invalidate()
-            evenNumber.isEnabled = false
-            oddNumber.isEnabled = false
-            randomNumber.text = "GAME OVER!"
-            randomNumber.textColor = .red
-            self.evenNumber.isUserInteractionEnabled = false
-            self.oddNumber.isUserInteractionEnabled = false
-            
+            self.showWrongAlert("Odd")
         }
     }
     
@@ -71,20 +60,12 @@ class ViewController: UIViewController {
         let currentNumber = Int(randomNumber.text!)
         if isEven(currentNumber!){
             correctIncorrect.image = UIImage(named: "wrong")
-            count += 1
+            self.showWrongAlert("Even")
         }else{
             correctIncorrect.image = UIImage(named: "correct")
         }
         
-        if count == 5{
-            timer?.invalidate()
-            evenNumber.isEnabled = false
-            oddNumber.isEnabled = false
-            randomNumber.text = "GAME OVER!"
-            randomNumber.textColor = .red
-            self.evenNumber.isUserInteractionEnabled = false
-            self.oddNumber.isUserInteractionEnabled = false
-        }
+        
     }
     
     
@@ -111,6 +92,19 @@ class ViewController: UIViewController {
             return false
         }
        
+    }
+    
+    func showWrongAlert(_ correctAns: String){
+        timer?.invalidate()
+        let alert = UIAlertController(title: "Result", message: "Oops..Wrong answer.. \n Correct answer is \(correctAns)", preferredStyle: .alert)
+        let actionOne =  UIAlertAction(title: "Play Again!", style: .default)
+        
+        alert.addAction(actionOne)
+        
+        let actionTwo =  UIAlertAction(title: "Show Progress", style: .default)
+        alert.addAction(actionTwo)
+        
+        present(alert, animated: true)
     }
     
 }
