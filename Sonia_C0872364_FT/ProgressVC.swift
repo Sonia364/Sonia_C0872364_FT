@@ -10,7 +10,7 @@ import UIKit
 class ProgressVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     weak var delegate: ViewController?
-    var progressData = [String]()
+    var progressData:[[String:String]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +19,15 @@ class ProgressVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        progressData.count
+        progressData!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "")
-        cell.textLabel?.text = progressData[indexPath.row]
+        let data = progressData![indexPath.row]
+        cell.textLabel?.text = data["text"]
+        cell.imageView?.image = UIImage(named: data["image"]!)
         
         return cell
     }

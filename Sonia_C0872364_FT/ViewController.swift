@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     var timer: Timer?
     
-    var userProgress = [String]()
+    var userProgress = [[String:String]]()
     
     override func viewDidLoad() {
         
@@ -47,11 +47,12 @@ class ViewController: UIViewController {
             
         }else{
             correctIncorrect.image = UIImage(named: "wrong")
-            self.showWrongAlert("Odd")
             result = "wrong"
+            self.showWrongAlert("Odd")
+            
         }
         
-        let report = "\(currentNumber!) is Even "
+        let report = ["text": "\(currentNumber!) is Even ", "image": "\(result)"]
         userProgress.append(report)
     }
     
@@ -79,7 +80,7 @@ class ViewController: UIViewController {
             result = "correct"
         }
         
-        let report = "\(currentNumber!) is Odd "
+        let report = ["text": "\(currentNumber!) is Odd ", "image": "\(result)"]
         userProgress.append(report)
     }
     
