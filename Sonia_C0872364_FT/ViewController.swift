@@ -21,8 +21,8 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        self.setupEvenLabelTap()
-//        self.setupOddLabelTap()
+        self.setupEvenLabelTap()
+        self.setupOddLabelTap()
         
         self.randomNumber.isHidden = false
         
@@ -35,6 +35,68 @@ class ViewController: UIViewController {
         
     }
     
+    
+    @IBAction func evenLabelTap(_ sender: UITapGestureRecognizer) {
+        let currentNumber = Int(randomNumber.text!)
+        if isEven(currentNumber!){
+            correctIncorrect.image = UIImage(named: "correct")
+        }else{
+            correctIncorrect.image = UIImage(named: "wrong")
+            count += 1
+        }
+        if count == 5{
+            timer?.invalidate()
+            evenNumber.isEnabled = false
+            oddNumber.isEnabled = false
+            randomNumber.text = "GAME OVER!"
+            randomNumber.textColor = .red
+            self.evenNumber.isUserInteractionEnabled = false
+            self.oddNumber.isUserInteractionEnabled = false
+            
+        }
+    }
+    
+    
+    func setupEvenLabelTap() {
+        
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.evenLabelTap(_:)))
+        self.evenNumber.isUserInteractionEnabled = true
+        self.evenNumber.addGestureRecognizer(labelTap)
+        
+    }
+    
+    
+    
+    @IBAction func oddLabelTap(_ sender: UITapGestureRecognizer) {
+        let currentNumber = Int(randomNumber.text!)
+        if isEven(currentNumber!){
+            correctIncorrect.image = UIImage(named: "wrong")
+            count += 1
+        }else{
+            correctIncorrect.image = UIImage(named: "correct")
+        }
+        
+        if count == 5{
+            timer?.invalidate()
+            evenNumber.isEnabled = false
+            oddNumber.isEnabled = false
+            randomNumber.text = "GAME OVER!"
+            randomNumber.textColor = .red
+            self.evenNumber.isUserInteractionEnabled = false
+            self.oddNumber.isUserInteractionEnabled = false
+        }
+    }
+    
+    
+    func setupOddLabelTap() {
+        
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.oddLabelTap(_:)))
+        self.oddNumber.isUserInteractionEnabled = true
+        self.oddNumber.addGestureRecognizer(labelTap)
+        
+    }
+    
+    
     private func setRandomvalue(){
         
         let randomInt = Int.random(in: 1..<100)
@@ -42,11 +104,13 @@ class ViewController: UIViewController {
         //RandomNumber.isHidden = false
     }
     
-    func isPrime(_ n: Int) -> Bool {
-        guard n >= 2     else { return false }
-        guard n != 2     else { return true  }
-        guard n % 2 != 0 else { return false }
-        return !stride(from: 3, through: Int(sqrt(Double(n))), by: 2).contains { n % $0 == 0 }
+    func isEven(_ n: Int) -> Bool {
+        if n%2 == 0 {
+            return true
+        }else{
+            return false
+        }
+       
     }
     
 }
