@@ -36,6 +36,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func evenLabelTap(_ sender: UITapGestureRecognizer) {
+        correctIncorrect.isHidden = false
+        
         let currentNumber = Int(randomNumber.text!)
         if isEven(currentNumber!){
             correctIncorrect.image = UIImage(named: "correct")
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func oddLabelTap(_ sender: UITapGestureRecognizer) {
+        correctIncorrect.isHidden = false
         let currentNumber = Int(randomNumber.text!)
         if isEven(currentNumber!){
             correctIncorrect.image = UIImage(named: "wrong")
@@ -97,11 +100,24 @@ class ViewController: UIViewController {
     func showWrongAlert(_ correctAns: String){
         timer?.invalidate()
         let alert = UIAlertController(title: "Result", message: "Oops..Wrong answer.. \n Correct answer is \(correctAns)", preferredStyle: .alert)
-        let actionOne =  UIAlertAction(title: "Play Again!", style: .default)
+        let actionOne =  UIAlertAction(title: "Play Again!", style: .default){_ in
+            self.correctIncorrect.isHidden = true
+            self.timer =  Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { (timer) in
+                self.setRandomvalue()
+            }
+        }
         
         alert.addAction(actionOne)
         
-        let actionTwo =  UIAlertAction(title: "Show Progress", style: .default)
+        let actionTwo =  UIAlertAction(title: "Show Progress", style: .default){_ in
+            let mainSB : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let ProgressVC = mainSB.instantiateViewController(withIdentifier: "ProgressVCScene") as? ProgressVC
+            ProgressVC?.delegate = self
+            ProgressVC?.progressData = ["even","odd"]
+            if let ProgressVC = ProgressVC {
+                self.navigationController?.pushViewController(ProgressVC, animated: true)
+            }
+        }
         alert.addAction(actionTwo)
         
         present(alert, animated: true)

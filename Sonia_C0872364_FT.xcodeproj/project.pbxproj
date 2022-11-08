@@ -13,6 +13,7 @@
 		9B3772B12919CDF400D7B86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3772AF2919CDF400D7B86E /* Main.storyboard */; };
 		9B3772B32919CDF600D7B86E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3772B22919CDF600D7B86E /* Assets.xcassets */; };
 		9B3772B62919CDF600D7B86E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3772B42919CDF600D7B86E /* LaunchScreen.storyboard */; };
+		9B3772C02919DE1100D7B86E /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3772BF2919DE1100D7B86E /* ProgressVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9B3772B22919CDF600D7B86E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B3772B52919CDF600D7B86E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B3772B72919CDF600D7B86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B3772BF2919DE1100D7B86E /* ProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				9B3772B22919CDF600D7B86E /* Assets.xcassets */,
 				9B3772B42919CDF600D7B86E /* LaunchScreen.storyboard */,
 				9B3772B72919CDF600D7B86E /* Info.plist */,
+				9B3772BF2919DE1100D7B86E /* ProgressVC.swift */,
 			);
 			path = Sonia_C0872364_FT;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3772AE2919CDF400D7B86E /* ViewController.swift in Sources */,
+				9B3772C02919DE1100D7B86E /* ProgressVC.swift in Sources */,
 				9B3772AA2919CDF400D7B86E /* AppDelegate.swift in Sources */,
 				9B3772AC2919CDF400D7B86E /* SceneDelegate.swift in Sources */,
 			);
