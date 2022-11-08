@@ -30,9 +30,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="OJL-W6-Gpf" appends="YES" id="yAX-fN-lYf"/>
-                                </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Odd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSG-fb-shr">
                                 <rect key="frame" x="73" y="410" width="244" height="61"/>
@@ -41,11 +38,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="KmW-Xg-XVY" appends="YES" id="Mu8-K6-7Hv"/>
-                                </connections>
                             </label>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-CL-Ljm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-CL-Ljm">
                                 <rect key="frame" x="87" y="624" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -55,14 +49,22 @@
                     </view>
                     <connections>
                         <outlet property="correctIncorrect" destination="ZG8-CL-Ljm" id="ziW-Wm-Lpc"/>
-                        <outlet property="evenNumber" destination="U8I-8q-JEN" id="1Iw-7z-bTK"/>
+                        <outlet property="evenNumber" destination="U8I-8q-JEN" id="JfU-YD-sYy"/>
                         <outlet property="oddNumber" destination="qSG-fb-shr" id="ln8-pF-B5U"/>
                         <outlet property="randomNumber" destination="MYg-aL-2DW" id="cyD-gM-I9F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="OJL-W6-Gpf"/>
-                <tapGestureRecognizer id="KmW-Xg-XVY"/>
+                <tapGestureRecognizer id="OJL-W6-Gpf">
+                    <connections>
+                        <action selector="evenLabelTap:" destination="BYZ-38-t0r" id="H9b-Wq-XRf"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="KmW-Xg-XVY">
+                    <connections>
+                        <action selector="oddLabelTap:" destination="BYZ-38-t0r" id="U90-vj-4PS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
         </scene>
